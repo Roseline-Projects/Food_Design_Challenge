@@ -15,8 +15,8 @@ const OptionPage = (pageType, cards) => { //cards is a list of cards, pageType c
                     {/* Page Cards */}
                     <ul>
                         {
-                            cards.map(card => (
-                                <li>{card}</li>
+                            cards.map((card, index) => (
+                                <li key={index}>{card}</li>  
                             ))
                         }
                     </ul>

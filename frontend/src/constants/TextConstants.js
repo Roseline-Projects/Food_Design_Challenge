@@ -13,3 +13,34 @@ export const optionPageTextConstants = {
 }
 
 //export constant for some test card values
+//pagetype: recipes
+//cards => random nonsense
+export const testCards = [
+    {
+        name: 'test1',
+        details: {
+            a: 'a',
+            b: 'b',
+            c: 'c',   
+        },
+        image: '',
+    },
+    {
+        name: 'test2',
+        details: {
+            a: 'f',
+            b: 'g',
+            c: 'h',   
+        },
+        image: '',
+    },
+    {
+        name: 'test3',
+        details: {
+            a: 'u',
+            b: 'i',
+            c: 'o',   
+        },
+        image: '',
+    },
+]

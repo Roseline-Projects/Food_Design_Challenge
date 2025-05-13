@@ -12,9 +12,9 @@ const Card = ({name, details, image}) => {
                 <h3>{name}</h3>
                 <ul>
                     {
-                        Object.entries(details).map((item, index) => {
+                        Object.entries(details).map((item, index) => (
                             <li key={index}>{item[0]} : {item[1]}</li>
-                        })
+                        ))
                     }
                 </ul>
             </div>

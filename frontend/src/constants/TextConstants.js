@@ -12,4 +12,4 @@ export const optionPageTextConstants = {
     }
 }
 
-export const 
+//export constant for some test card values

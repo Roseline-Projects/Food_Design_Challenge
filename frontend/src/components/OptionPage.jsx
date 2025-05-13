@@ -1,30 +1,57 @@
 import Card from "./Card"
 import { optionPageTextConstants } from "../constants/TextConstants"
 
-const OptionPage = ({pageType, cards}) => { //cards is a list of cards, pageType contains the page type information from the TextConstants
+const OptionPage = ({pageType, cards}) => { //cards is a list of cards, pageType contains the page type information
     return (
-        <div className="flex justify-items-center items-center min-h-screen"> {/* display flex items center justify center */}
-            <div className="px-20 w-2/3"> {/*Center mid page, some padding, 66%*/}
+        <div className="flex flex-col md:flex-row min-h-screen">
+            {/* Main content area - 2/3 width */}
+            <div className="w-full md:w-2/3 px-4 md:px-12 lg:px-20 py-10 flex flex-col justify-center">
                 {/* Information Staging Area */}
-                {/* Cards rendered here */}
-                <div className="text-center my-6 space-y-4 max-h-1/3"> {/* Text center margin vertical */}
-                    <h1 className="text-4xl font-bold">{optionPageTextConstants[pageType]["title"]}</h1> {/* Bold font XL text*/}
-                    <h3 className="text-l font-light">{optionPageTextConstants[pageType]["text"]}</h3> {/* Semibold font large text*/}
+                <div className="text-center mb-8 space-y-4">
+                    <h1 className="text-3xl md:text-4xl font-bold text-indigo-800">
+                        {optionPageTextConstants[pageType]["title"]}
+                    </h1>
+                    <h3 className="text-lg text-gray-600 max-w-3xl mx-auto">
+                        {optionPageTextConstants[pageType]["text"]}
+                    </h3>
                 </div>
-                <div>
-                    {/* Page Cards */}
-                    <ul className="h-2/3 flex flex-wrap grow justify-items-center gap-10"> {/* No decor display inline */}
-                        {
-                            cards.map((card, index) => (
-                                <li className="flex-1" key={index}><Card {...card} /></li>
-                            ))
-                        }
-                    </ul> {/* on list items, margins horizontal*/}
+                
+                {/* Page Cards */}
+                <div className="w-full">
+                    <ul className="flex flex-col md:flex-row flex-wrap gap-6 md:gap-8 justify-center">
+                        {cards.map((card, index) => (
+                            <li 
+                                className="flex-1 min-w-[280px] max-w-[400px] mx-auto md:mx-0" 
+                                key={index}
+                            >
+                                <Card {...card} />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                
+                {/* Additional options/navigation */}
+                <div className="mt-12 text-center">
+                    <button className="px-6 py-2 bg-indigo-700 hover:bg-indigo-800 text-white rounded-lg transition-colors shadow-md">
+                        See more options
+                    </button>
                 </div>
             </div>
-            <div className="w-1/3 min-h-screen overflow-hidden"> {/* 33%, highlight color background */}
-                {/* Decorative Banner */}
-                <img className="size-full object-cover" src={optionPageTextConstants[pageType]["image"]}/> {/* Fill container, nothing much for now */}
+            
+            {/* Decorative banner - 1/3 width */}
+            <div className="w-full md:w-1/3 min-h-[300px] md:min-h-screen bg-indigo-900 relative overflow-hidden">
+                <img 
+                    className="w-full h-full object-cover object-center opacity-80" 
+                    src={optionPageTextConstants[pageType]["image"]}
+                    alt="Decorative food image"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/70 to-transparent"></div>
+                <div className="absolute bottom-8 left-8 right-8 text-white">
+                    <h3 className="text-2xl font-bold mb-2">Ready to save?</h3>
+                    <p className="text-indigo-100">
+                        Find the best deals and options for your budget
+                    </p>
+                </div>
             </div>
         </div>
     )

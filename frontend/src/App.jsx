@@ -8,7 +8,6 @@ function App() {
   return (
     <div>
       <LandingPage/>
-      <OptionPage pageType='ingredients' cards={testCards} />
     </div>
   )
 }

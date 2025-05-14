@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link, Outlet } from 'react-router'
 
 function LandingPage() {
   return (
@@ -28,19 +29,25 @@ function LandingPage() {
           </h3>
           <ul className="space-y-4">
             <li>
-              <a className="block w-full py-4 px-6 bg-white hover:bg-indigo-50 text-indigo-800 font-medium rounded-lg shadow-md transition-colors text-center cursor-pointer">
+              <Link 
+                to='option/ingredients' 
+                className="block w-full py-4 px-6 bg-white hover:bg-indigo-50 text-indigo-800 font-medium rounded-lg shadow-md transition-colors text-center cursor-pointer">
                 Source Ingredients
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="block w-full py-4 px-6 bg-white hover:bg-indigo-50 text-indigo-800 font-medium rounded-lg shadow-md transition-colors text-center cursor-pointer">
+              <Link 
+                to='option/recipes'
+                className="block w-full py-4 px-6 bg-white hover:bg-indigo-50 text-indigo-800 font-medium rounded-lg shadow-md transition-colors text-center cursor-pointer">
                 Search Recipes
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="block w-full py-4 px-6 bg-white hover:bg-indigo-50 text-indigo-800 font-medium rounded-lg shadow-md transition-colors text-center cursor-pointer">
+              <Link 
+                to='option/delivery'
+                className="block w-full py-4 px-6 bg-white hover:bg-indigo-50 text-indigo-800 font-medium rounded-lg shadow-md transition-colors text-center cursor-pointer">
                 Order Ready-Made Food
-              </a>
+              </Link>
             </li>
           </ul>
           <p className="text-indigo-200 mt-8 text-center text-sm">

@@ -1,18 +1,23 @@
 import Card from "./Card"
 import { optionPageTextConstants } from "../constants/TextConstants"
+import { testCards } from "../constants/TextConstants"
+import { useParams } from "react-router"
 
-const OptionPage = ({pageType, cards}) => { //cards is a list of cards, pageType contains the page type information
+const OptionPage = () => { //cards is a list of cards, pageType contains the page type information
+    let pageType = useParams().optionType
+    let cards = testCards //for debugging and styling for now
     return (
         <div className="flex flex-col md:flex-row min-h-screen">
             {/* Main content area - 2/3 width */}
+            {console.log(pageType)}
             <div className="w-full md:w-2/3 px-4 md:px-12 lg:px-20 py-10 flex flex-col justify-center">
                 {/* Information Staging Area */}
                 <div className="text-center mb-8 space-y-4">
-                    <h1 className="text-3xl md:text-4xl font-bold text-indigo-800">
-                        {optionPageTextConstants[pageType]["title"]}
+                    <h1 className="text-3xl md:text-4xl font-bold text-green-800">
+                        {pageType != null ? optionPageTextConstants[pageType]["title"] : null}
                     </h1>
                     <h3 className="text-lg text-gray-600 max-w-3xl mx-auto">
-                        {optionPageTextConstants[pageType]["text"]}
+                        {pageType != null ? optionPageTextConstants[pageType]["text"]: null}
                     </h3>
                 </div>
                 
@@ -21,7 +26,7 @@ const OptionPage = ({pageType, cards}) => { //cards is a list of cards, pageType
                     <ul className="flex flex-col md:flex-row flex-wrap gap-6 md:gap-8 justify-center">
                         {cards.map((card, index) => (
                             <li 
-                                className="flex-1 min-w-[280px] max-w-[400px] mx-auto md:mx-0" 
+                                className="flex-1 min-w-[280px] max-w-[400px] max-h-[500px] mx-auto md:mx-0" 
                                 key={index}
                             >
                                 <Card {...card} />
@@ -42,7 +47,7 @@ const OptionPage = ({pageType, cards}) => { //cards is a list of cards, pageType
             <div className="w-full md:w-1/3 min-h-[300px] md:min-h-screen bg-indigo-900 relative overflow-hidden">
                 <img 
                     className="w-full h-full object-cover object-center opacity-80" 
-                    src={optionPageTextConstants[pageType]["image"]}
+                    src={pageType != null ? optionPageTextConstants[pageType]["image"] : null}
                     alt="Decorative food image"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/70 to-transparent"></div>

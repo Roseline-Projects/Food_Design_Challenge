@@ -4,9 +4,9 @@ const Card = ({name, details, image}) => {
     //object details
     //string image
     return (
-        <div className="rounded-xl h-full">
+        <div className="rounded-xl h-full bg-cream border">
             <div className="h-1/2 overflow-hidden">
-                <img className="object-cover size-full" src={image} alt={name}/>
+                <img className="object-cover size-full rounded-t-xl" src={image} alt={name}/>
             </div>
             <div className="p-4 flex flex-col items-stretch"> {/* Padding */}
                 <h3 className="text-lg font-semibold text-green-800 mt-2 mb-4">{name}</h3> {/* Semibold title, slightly large text bottom margin */}

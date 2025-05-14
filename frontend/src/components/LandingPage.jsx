@@ -1,9 +1,10 @@
 // LandingPage.jsx
 import { useState } from 'react'
-import { Link, Outlet } from 'react-router'
+import { Link, Outlet, useNavigate } from 'react-router'
 import '../index.css' // Import the CSS file
 
 function LandingPage() {
+  const navigate = useNavigate()
   return (
     <div className="min-h-screen flex flex-col md:flex-row bg-cream font-nunito">
       {/* Left container - Site info */}
@@ -33,28 +34,29 @@ function LandingPage() {
           </h3>
           <ul className="space-y-4">
             <li>
-              <Link
-                to="option/ingredients"
+              <button
+                onClick={() => navigate("/setup", {state : {destination: "ingredients"}})}
                 className="block w-full py-4 px-6 bg-cream hover:bg-light-yellow text-dark-green font-medium rounded-lg shadow-md transition-colors text-center cursor-pointer font-nunito"
               >
                 Source Ingredients
-              </Link>
+              </button>
             </li>
             <li>
-              <Link
-                to="option/recipes"
+              <button
+                onClick={() => navigate("/setup", {state : {destination: "recipes"}})}
                 className="block w-full py-4 px-6 bg-orange hover:bg-orange/90 text-cream font-medium rounded-lg shadow-md transition-colors text-center cursor-pointer font-nunito"
               >
                 Search Recipes
-              </Link>
+              </button>
             </li>
             <li>
-              <Link
+              <button
                 to="option/delivery"
+                onClick={() => navigate("/setup", {state : {destination: "delivery"}})}
                 className="block w-full py-4 px-6 bg-medium-green hover:bg-medium-green/90 text-cream font-medium rounded-lg shadow-md transition-colors text-center cursor-pointer font-nunito"
               >
                 Order Ready-Made Food
-              </Link>
+              </button>
             </li>
           </ul>
           <p className="text-light-yellow mt-8 text-center text-sm font-nunito">

@@ -1,15 +1,21 @@
 import Card from "./Card"
 import { optionPageTextConstants } from "../constants/TextConstants"
 import { testCards } from "../constants/TextConstants"
-import { useParams } from "react-router"
+import { useLocation, useParams } from "react-router"
 
 const OptionPage = () => { //cards is a list of cards, pageType contains the page type information
     let pageType = useParams().optionType
     let cards = testCards //for debugging and styling for now
+
+    const location = useLocation()
+    const userData = location.state || {}
+
     return (
         <div className="flex flex-col md:flex-row min-h-screen">
             {/* Main content area - 2/3 width */}
             {console.log(pageType)}
+            {console.log(location)}
+            {console.log(userData)}
             <div className="w-full md:w-2/3 px-4 md:px-12 lg:px-20 py-10 flex flex-col justify-center">
                 {/* Information Staging Area */}
                 <div className="text-center mb-8 space-y-4">
@@ -19,6 +25,7 @@ const OptionPage = () => { //cards is a list of cards, pageType contains the pag
                     <h3 className="text-lg text-gray-600 max-w-3xl mx-auto">
                         {pageType != null ? optionPageTextConstants[pageType]["text"]: null}
                     </h3>
+                    <h4 className="text-lg font-semibold text-dark-green">Results for {userData.name} in {userData.city} for budget ${userData.budget}.</h4>
                 </div>
                 
                 {/* Page Cards */}

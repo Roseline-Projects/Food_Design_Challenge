@@ -17,6 +17,11 @@ export const optionPageTextConstants = {
     }
 }
 
+export const setupPageTextConstants = {
+    title: "Let's Get Started",
+    description: 'Some description Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet consectetur accusantium sequi ducimus eum quo quae illo doloribus voluptatem! Iste reiciendis vero voluptatibus explicabo quaerat similique maxime provident fuga voluptas!',
+}
+
 //export constant for some test card values
 //pagetype: recipes
 //cards => random nonsense

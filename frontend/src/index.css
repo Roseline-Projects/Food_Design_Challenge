@@ -1,1 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 @import "tailwindcss";
+
+:root {
+  /* Custom color variables */
+  --dark-green: #216530;
+  --medium-green: #7AA950;
+  --orange: #ED8530;
+  --light-yellow: #FFD390;
+  --cream: #F8F1E1;
+
+  /* Apply font to entire document */
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Tailwind custom colors */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Nunito', system-ui, sans-serif;
+  }
+}
+
+/* Custom utilities */
+.font-nunito {
+    font-family: 'Nunito', sans-serif;
+  }
+
+.bg-dark-green {
+  background-color: var(--dark-green);
+}
+
+.bg-medium-green {
+  background-color: var(--medium-green);
+}
+
+.bg-orange {
+  background-color: var(--orange);
+}
+
+.bg-light-yellow {
+  background-color: var(--light-yellow);
+}
+
+.bg-cream {
+  background-color: var(--cream);
+}
+
+.text-dark-green {
+  color: var(--dark-green);
+}
+
+.text-medium-green {
+  color: var(--medium-green);
+}
+
+.text-orange {
+  color: var(--orange);
+}
+
+.text-light-yellow {
+  color: var(--light-yellow);
+}
+
+.text-cream {
+  color: var(--cream);
+}
+

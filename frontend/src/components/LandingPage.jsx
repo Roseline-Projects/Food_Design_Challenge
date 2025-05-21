@@ -1,71 +1,39 @@
-// LandingPage.jsx
-import { useState } from 'react'
-import { Link, Outlet, useNavigate } from 'react-router'
-import '../index.css' // Import the CSS file
-
-function LandingPage() {
-  const navigate = useNavigate()
+const LandingPage = () => {
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-cream font-nunito">
-      {/* Left container - Site info */}
-      <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-dark-green mb-4 font-nunito">
-          Cheap Food and Groceries for Everyone
-        </h1>
-        <h2 className="text-xl md:text-2xl text-medium-green mb-6 font-nunito">
-          Minimize food costs, maximize shopping trip value
+    <div className="min-h-screen font-nunito text-dark-green bg-green-50 mt-6">
+      {/* Title Section */}
+      <div className="h-1/2 bg-orange text-center p-8">
+        <h1 className="text-5xl md:text-6xl font-extrabold text-white">SNAP Benefits Aid Tool</h1>
+        <h2 className="text-xl md:text-2xl font-semibold text-white mt-2">
+          Make Your Benefits Work For You
         </h2>
-        <p className="text-dark-green mb-8 max-w-xl font-nunito">
-          Information Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam
-          magni doloremque enim voluptas deserunt nemo debitis, nam quaerat. Sequi
-          nostrum facere sit maxime aliquid delectus, earum magnam distinctio natus amet.
-        </p>
-        <div className="mt-auto h-96 w-full flex items-center justify-center bg-light-yellow rounded-lg">
-          {/* 3D Model container */}
-          <p className="text-dark-green font-nunito">3D Model Placeholder</p>
-        </div>
       </div>
 
-      {/* Right container - Options menu */}
-      <div className="w-full md:w-1/2 bg-dark-green p-8 md:p-12 flex items-center justify-center">
-        <div className="w-full max-w-md">
-          <h3 className="text-2xl font-bold text-cream mb-8 text-center font-nunito">
-            Choose your budget-friendly option
-          </h3>
-          <ul className="space-y-4">
-            <li>
-              <button
-                onClick={() => navigate("/setup", {state : {destination: "ingredients"}})}
-                className="block w-full py-4 px-6 bg-cream hover:bg-light-yellow text-dark-green font-medium rounded-lg shadow-md transition-colors text-center cursor-pointer font-nunito"
-              >
-                Source Ingredients
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => navigate("/setup", {state : {destination: "recipes"}})}
-                className="block w-full py-4 px-6 bg-orange hover:bg-orange/90 text-cream font-medium rounded-lg shadow-md transition-colors text-center cursor-pointer font-nunito"
-              >
-                Search Recipes
-              </button>
-            </li>
-            <li>
-              <button
-                to="option/delivery"
-                onClick={() => navigate("/setup", {state : {destination: "delivery"}})}
-                className="block w-full py-4 px-6 bg-medium-green hover:bg-medium-green/90 text-cream font-medium rounded-lg shadow-md transition-colors text-center cursor-pointer font-nunito"
-              >
-                Order Ready-Made Food
-              </button>
-            </li>
-          </ul>
-          <p className="text-light-yellow mt-8 text-center text-sm font-nunito">
-            Save money and time with our smart food budgeting tools
-          </p>
+      {/* Two-Column Info Section */}
+      <div className="flex flex-col md:flex-row justify-center items-center gap-20 p-12">
+        <div className="max-w-[650px] shadow-2xl">
+            <img className="rounded-2xl" src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+        </div>
+        <div className="space-y-4">
+            {/* Problem Box */}
+            <div className="bg-cream rounded-lg shadow-md p-6 max-w-md text-center">
+            <h3 className="text-lg md:text-2xl font-semibold mb-4">The Problem</h3>
+            <p className="text-sm md:text-base">
+                13.7% of people living in Miami, Florida are food insecure, and the SNAP program has a 50% enrollment rate there. This leaves over 100k people food insecure and without assistance since they're not able to leverage these benefits.
+            </p>
+            </div>
+
+            {/* Mission Box */}
+            <div className="bg-cream rounded-lg shadow-md p-6 max-w-md text-center">
+            <h3 className="text-lg md:text-2xl font-semibold mb-4">Our Mission</h3>
+            <p className="text-sm md:text-base">
+                Our solution is centered around helping SNAP-eligible Miamians in poverty to access and use these benefits most effectively to alleviate financial burden. We aim to onboard and assist!
+            </p>
+            </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default LandingPage;
+export default LandingPage

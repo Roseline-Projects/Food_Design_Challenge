@@ -1,16 +1,13 @@
-import { useState } from 'react'
-import LandingPage from './components/LandingPage'
-import OptionPage from './components/OptionPage'
-import SetupPage from './components/SetupPage'
-import { testCards } from './constants/TextConstants'
+import LandingPage from "./components/LandingPage"
+import NavBar from "./components/NavBar"
 
-function App() {
-
-  return (
-    <div>
-      <LandingPage/>
-    </div>
-  )
+const App = () => {
+    return (
+        <div>
+            <NavBar/>
+            <LandingPage/>  
+        </div>
+    )
 }
 
 export default App

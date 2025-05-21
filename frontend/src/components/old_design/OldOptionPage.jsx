@@ -1,6 +1,6 @@
 import Card from "./Card"
-import { optionPageTextConstants } from "../constants/TextConstants"
-import { testCards } from "../constants/TextConstants"
+import { optionPageTextConstants } from "../../constants/OldTextConstants"
+import { testCards } from "../../constants/OldTextConstants"
 import { useLocation, useParams } from "react-router"
 
 const OptionPage = () => { //cards is a list of cards, pageType contains the page type information
@@ -11,7 +11,7 @@ const OptionPage = () => { //cards is a list of cards, pageType contains the pag
     const userData = location.state || {}
 
     return (
-        <div className="flex flex-col md:flex-row min-h-screen">
+        <div className="flex flex-col md:flex-row min-h-screen bg-cream">
             {/* Main content area - 2/3 width */}
             {console.log(pageType)}
             {console.log(location)}

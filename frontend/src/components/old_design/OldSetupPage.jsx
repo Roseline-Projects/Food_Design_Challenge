@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { setupPageTextConstants } from "../constants/TextConstants"
+import { setupPageTextConstants } from "../../constants/OldTextConstants"
 import { useLocation, useNavigate } from "react-router"
 const SetupPage = () => {
     const navigate = useNavigate()
@@ -46,7 +46,7 @@ const SetupPage = () => {
     }
 
     return (
-        <div className="flex flex-col justify-center items-center min-h-screen md:h-screen md:flex-row"> {/* flex */}
+        <div className="bg-cream flex flex-col justify-center items-center min-h-screen md:h-screen md:flex-row"> {/* flex */}
             {/* Left side description */}
             {/* <div className="w-1/3 h-full flex flex-col items-center justify-center p-8 bg-green-800"> 
                 <h2 className="w-full text-left font-bold text-3xl text-white mb-8">Let's Get Started</h2>

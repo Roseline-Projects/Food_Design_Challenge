@@ -2,6 +2,10 @@
 import { useState } from 'react'
 import { Link, Outlet, useNavigate } from 'react-router'
 import '../index.css' // Import the CSS file
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
+import { UdonModel } from './UdonModel'
+
 
 function LandingPage() {
   const navigate = useNavigate()
@@ -22,7 +26,12 @@ function LandingPage() {
         </p>
         <div className="mt-auto h-96 w-full flex items-center justify-center bg-light-yellow rounded-lg">
           {/* 3D Model container */}
-          <p className="text-dark-green font-nunito">3D Model Placeholder</p>
+          <Canvas camera={{ position: [0, 3, -3] }}>
+            <ambientLight />
+            <directionalLight position={[2, 2, 2]} />
+            <UdonModel position={[0, 0, 0]} rotation={[0, Math.PI, 0]} />
+            <OrbitControls enableZoom={false} />
+          </Canvas>
         </div>
       </div>
 

@@ -257,7 +257,6 @@ const StoresPage = () => {
 
   return (
     <>
-      <NavBar />
       <div className="flex flex-col md:flex-row max-h-screen">
         {/* Main content area (2/3 width on medium+ screens) */}
         <div className="w-full md:w-2/3">

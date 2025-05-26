@@ -41,7 +41,6 @@ const TransportationPage = () => {
     ]
     return (
         <>
-        <NavBar/>
         <div className="bg-cream flex flex-col items-center min-h-screen md:h-screen md:flex-row">
 
             <div className="mt-12 w-full md:w-1/3 min-h-[300px] md:min-h-screen bg-indigo-900 relative overflow-hidden">

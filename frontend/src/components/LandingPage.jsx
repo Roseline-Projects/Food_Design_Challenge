@@ -4,6 +4,8 @@ import { IconContext } from "react-icons/lib";
 import { FcApproval } from "react-icons/fc";
 import { FcPaid } from "react-icons/fc";
 import { FcHome } from "react-icons/fc";
+import { FcAbout } from "react-icons/fc";
+import { FcSurvey } from "react-icons/fc";
 //bg-[url(https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]
 
 const Hero = () => {
@@ -21,29 +23,45 @@ const Hero = () => {
           <Link 
             onClick={tempHandleScroll} 
             to=''
-            className="inline-block text-xl font-bold px-8 py-3 bg-dark-green rounded-xl text-white transition hover:bg-green-200">I'm Interested</Link>
+            className="inline-block text-xl font-bold px-8 py-3 mt-4 bg-dark-green rounded-xl text-white transition hover:bg-green-200">I'm Interested</Link>
         </div>
       </div>
-
     </div>
   )
 }
 
-const Section = ({header, para, linkText, linkTo, backgroundColor, icon}) => {
+const Section = ({header, para, para2, linkText, linkText2, linkTo, linkTo2, backgroundColor, icon, icon2}) => {
   return (
     <div className={`${backgroundColor} p-12 inset-shadow-sm`}>
       <div className="w-2/3 mx-auto">
       <h3 className="text-3xl font-bold mb-4 w-fit">{header}</h3> {/* XL text bold left aligned */}
-      <div className="flex items-center gap-2"> {/* flex row */}
+      <div className="mb-4">
+        <div className="flex items-center gap-2"> {/* flex row */}
+          <div> {/* max width */}
+            <IconContext.Provider value={{size: "8rem"}}>
+              {icon}
+            </IconContext.Provider>
+          </div>
+          <div className="p-6">
+            <p className='text-xl text-black mb-2 font-light'>{para}</p> {/* slightly larger text? max width 2/3 */}
+          </div>
+        </div>
+      </div>
+
+      <hr></hr>
+
+      <div className="mt-2">
+        <div className="flex items-center gap-2"> {/* flex row */}
         <div> {/* max width */}
           <IconContext.Provider value={{size: "8rem"}}>
-            {icon}
+            {icon2}
           </IconContext.Provider>
         </div>
         <div className="p-6">
-          <p className='text-xl text-black mb-2 font-light'>{para}</p> {/* slightly larger text? max width 2/3 */}
+          <p className='text-xl text-black mb-2 font-light'>{para2}</p> {/* slightly larger text? max width 2/3 */}
           <Link to={linkTo} className="block w-fit font-bold text-2xl px-6 py-2 bg-orange text-white shadow-md rounded-xl my-4">{linkText}</Link> {/* large buttons bold font borders and shadows wider than tall */}
         </div>
+      </div>
       </div>
       </div>
 
@@ -57,7 +75,7 @@ const EstimateStatSection = () => {
       {/* <h3 className="text-4xl font-light">Families in Miami Receive</h3>
       <h4 className="text-7xl font-extrabold my-6 text-orange">$468</h4>
       <h3 className="text-4xl font-light">In Benefits On Average</h3> */}
-      <h3 className="text-3xl mb-16 font-bold">The Profit</h3>
+      <h3 className="text-3xl mb-16 font-bold">The Gain</h3>
       <div className="w-2/3 mx-auto grid grid-cols-2">
         <div>
           <div className="w-fit mx-auto">
@@ -87,11 +105,13 @@ const LandingPage = () => {
     nearbyStores: {
       header: 'Find Nearby Stores',
       para: "If you're getting benefits but you don't know where to use them, you can locate SNAP-eligible near you with our locator tool.",
+      para2: "Our tool helps you find food sources near you, from grocery stores to farmer's markets and everything in-between, with just the click of a button.",
       linkText: 'Explore'
     },
     apply: {
       header: 'Start Saving Today',
-      para: 'Ready to send an application and give your budget a boost? Apply for SNAP Today.',
+      para: "How do you apply? You'll need proof of identification, income, and residency. Don't worry, our in-app Agent will help you through your SNAP Application and answer any tough questions on-demand.",
+      para2: 'Ready to send an application and give your budget a boost? Apply for SNAP Today.',
       linkText: 'Apply Now'
     }
   }
@@ -100,18 +120,20 @@ const storesCard = {
   ...textConstants['nearbyStores'],
   linkTo: '/stores',
   backgroundColor: 'bg-green-100',
-  icon: <FcShop />
+  icon: <FcShop />,
+  icon2: <FcAbout />
 }
 
 const applyCard = {
   ...textConstants['apply'],
   linkTo: '/application',
   backgroundColor: 'bg-orange-100',
-  icon: <FcApproval />
+  icon: <FcSurvey />,
+  icon2: <FcApproval />
 }
 
   return (
-    <div className="min-h-screen font-nunito text-dark-green mt-6">
+    <div className="min-h-screen font-nunito text-dark-green">
       {/* Title Section */}
       {/* <div className="h-1/2 text-center p-8">
         <h1 className="text-5xl md:text-6xl font-extrabold text-dark-green">SNAP Benefits Aid Tool</h1>
@@ -126,6 +148,9 @@ const applyCard = {
         {/* <div className="max-w-[650px] shadow-2xl">
             <img className="rounded-2xl" src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
         </div> */}
+        <div>
+          <p className="text-xl p-18 font-light inset-shadow-sm">13.7% of people living in Miami, Florida are food insecure, and the SNAP program has a 50% enrollment rate there. This leaves over <b className="font-semibold">100k people</b> food insecure and without assistance since they're not able to leverage these benefits.</p>
+        </div>
         <div id="info-section" className="space-y-10">
           <Section {...storesCard}/>
           <EstimateStatSection />
@@ -146,6 +171,9 @@ const applyCard = {
                 Our solution is centered around helping SNAP-eligible Miamians in poverty to access and use these benefits most effectively to alleviate financial burden. We aim to onboard and assist!
             </p>
             </div> */}
+        </div>
+        <div>
+
         </div>
       </div>
     </div>

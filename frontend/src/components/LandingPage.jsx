@@ -6,6 +6,21 @@ import { FcMoneyTransfer } from "react-icons/fc";
 import { FcPaid } from "react-icons/fc";
 import { FcHome } from "react-icons/fc";
 
+const Hero = () => {
+  return (
+    <div className="b bg-[url(https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]">
+      <div className="grid max-w-2/3 mx-auto py-28">
+        <div className="">
+          <h1 className="text-6xl font-bold mb-4">Expand Your Food Budget with SNAP</h1>
+          <h2 className="text-3xl font-light mb-8">Aspire, Apply, Arrive</h2>
+          <Link className="inline-block text-xl font-bold px-8 py-3 bg-orange rounded-xl text-white">I'm Interested</Link>
+        </div>
+      </div>
+
+    </div>
+  )
+}
+
 const Section = ({header, para, linkText, linkTo, backgroundColor, icon}) => {
   return (
     <div className={`${backgroundColor} p-12 inset-shadow-sm`}>
@@ -92,12 +107,13 @@ const applyCard = {
   return (
     <div className="min-h-screen font-nunito text-dark-green mt-6">
       {/* Title Section */}
-      <div className="h-1/2 text-center p-8">
+      {/* <div className="h-1/2 text-center p-8">
         <h1 className="text-5xl md:text-6xl font-extrabold text-dark-green">SNAP Benefits Aid Tool</h1>
         <h2 className="text-xl md:text-2xl font-semibold text-dark-green mt-2">
           Make Your Benefits Work For You
         </h2>
-      </div>
+      </div> */}
+      <Hero />
 
       {/* Two-Column Info Section */}
       <div className="">

@@ -3,12 +3,12 @@ import { Link, Outlet } from "react-router";
 const NavBar = () => {
   return (
     <>
-      <nav className="bg-orange absolute top-0 left-0 w-full flex justify-between items-center px-6 py-4 z-50 font-nunito">
+      <nav className="bg-orange absolute top-0 left-0 w-full flex justify-between items-center px-6 py-4 z-50 font-nunito shadow-sm">
         {/* Left: Logo / Brand */}
         <div>
           <Link
             to="/"
-            className="text-white font-bold text-2xl md:text-3xl drop-shadow-md"
+            className="text-white font-bold text-2xl md:text-3xl relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
             SNAP
           </Link>
@@ -17,36 +17,27 @@ const NavBar = () => {
         {/* Right: Navigation Links */}
         <div className="flex gap-6">
           <Link
-            to="/about"
-            className="text-dark-green text-base md:text-lg font-light drop-shadow-sm"
+            to="/"
+            className="text-white text-base md:text-lg font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
-            About
+            Home
           </Link>
           <Link
             to="/application"
-            className="text-dark-green text-base md:text-lg font-light drop-shadow-sm"
+            className="text-white text-base md:text-lg font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
-            Apply for SNAP
+            Apply 
           </Link>
           <Link
             to="/stores"
-            className="text-dark-green text-base md:text-lg font-light drop-shadow-sm"
+            className="text-white text-base md:text-lg font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
             Eligible Stores
-          </Link>
-          <Link
-            to="/transportation"
-            className="text-dark-green text-base md:text-lg font-light drop-shadow-sm"
-          >
-            Transportation Aid
           </Link>
         </div>
       </nav>
 
-      {/* <div className="pt-24">
-        <Outlet />
-      </div> */}
-      <div className="pb-2 bg-orange"></div>
+      <div className="pb-2 bg-teal-600"></div>
     </>
   );
 };

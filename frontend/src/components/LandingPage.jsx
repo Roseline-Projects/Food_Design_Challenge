@@ -2,18 +2,26 @@ import { Link } from "react-router"
 import { FcShop } from "react-icons/fc";
 import { IconContext } from "react-icons/lib";
 import { FcApproval } from "react-icons/fc";
-import { FcMoneyTransfer } from "react-icons/fc";
 import { FcPaid } from "react-icons/fc";
 import { FcHome } from "react-icons/fc";
+//bg-[url(https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]
 
 const Hero = () => {
+  const tempHandleScroll = () => {
+    const section = document.getElementById('info-section')
+    section.scrollIntoView({behavior: "smooth"})
+  }
   return (
-    <div className="b bg-[url(https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]">
+    <div className={`bg-gray-200 relative z-20 bg-no-repeat bg-right bg-[url('assets/heroimg_resize.jpg')]`}>
+      <div className="absolute inset-0 -z-10 bg-gray-900 opacity-60"></div>
       <div className="grid max-w-2/3 mx-auto py-28">
         <div className="">
-          <h1 className="text-6xl font-bold mb-4">Expand Your Food Budget with SNAP</h1>
-          <h2 className="text-3xl font-light mb-8">Aspire, Apply, Arrive</h2>
-          <Link className="inline-block text-xl font-bold px-8 py-3 bg-orange rounded-xl text-white">I'm Interested</Link>
+          <h1 className="text-6xl font-bold text-orange mb-4">Expand Your Food Budget <br/> with SNAP</h1>
+          <h2 className="text-3xl font-light text-orange mb-8">Aspire, Apply, Arrive</h2>
+          <Link 
+            onClick={tempHandleScroll} 
+            to=''
+            className="inline-block text-xl font-bold px-8 py-3 bg-dark-green rounded-xl text-white transition hover:bg-green-200">I'm Interested</Link>
         </div>
       </div>
 
@@ -29,10 +37,8 @@ const Section = ({header, para, linkText, linkTo, backgroundColor, icon}) => {
       <div className="flex items-center gap-2"> {/* flex row */}
         <div> {/* max width */}
           <IconContext.Provider value={{size: "8rem"}}>
-            {/* <FcShop />   */}
             {icon}
           </IconContext.Provider>
-          {/* <img src='' alt=''/> */}
         </div>
         <div className="p-6">
           <p className='text-xl text-black mb-2 font-light'>{para}</p> {/* slightly larger text? max width 2/3 */}
@@ -84,8 +90,8 @@ const LandingPage = () => {
       linkText: 'Explore'
     },
     apply: {
-      header: 'Apply for SNAP Benefits',
-      para: 'Ready to get that bag? Apply for SNAP Today.',
+      header: 'Start Saving Today',
+      para: 'Ready to send an application and give your budget a boost? Apply for SNAP Today.',
       linkText: 'Apply Now'
     }
   }
@@ -93,14 +99,14 @@ const LandingPage = () => {
 const storesCard = {
   ...textConstants['nearbyStores'],
   linkTo: '/stores',
-  backgroundColor: 'bg-green-50',
+  backgroundColor: 'bg-green-100',
   icon: <FcShop />
 }
 
 const applyCard = {
   ...textConstants['apply'],
-  linkTo: '/',
-  backgroundColor: 'bg-orange-50',
+  linkTo: '/application',
+  backgroundColor: 'bg-orange-100',
   icon: <FcApproval />
 }
 
@@ -120,7 +126,7 @@ const applyCard = {
         {/* <div className="max-w-[650px] shadow-2xl">
             <img className="rounded-2xl" src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
         </div> */}
-        <div className="space-y-10">
+        <div id="info-section" className="space-y-10">
           <Section {...storesCard}/>
           <EstimateStatSection />
           <Section {...applyCard}/>

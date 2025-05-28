@@ -6,13 +6,15 @@ import { FcPaid } from "react-icons/fc";
 import { FcHome } from "react-icons/fc";
 import { FcAbout } from "react-icons/fc";
 import { FcSurvey } from "react-icons/fc";
+import { landingTextConstants } from "../constants/TextConstants";
 //bg-[url(https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]
+const tempHandleScroll = () => {
+  const section = document.getElementById('info-section')
+  section.scrollIntoView({behavior: "smooth"})
+}
 
-const Hero = () => {
-  const tempHandleScroll = () => {
-    const section = document.getElementById('info-section')
-    section.scrollIntoView({behavior: "smooth"})
-  }
+//Original - scrapped
+const Hero = () => { {/* Completely overhaul format , no gray */}
   return (
     <div className={`bg-gray-200 relative z-20 bg-no-repeat bg-right bg-[url('assets/heroimg_resize.jpg')]`}>
       <div className="absolute inset-0 -z-10 bg-gray-900 opacity-60"></div>
@@ -30,7 +32,71 @@ const Hero = () => {
   )
 }
 
-const Section = ({header, para, para2, linkText, linkText2, linkTo, linkTo2, backgroundColor, icon, icon2}) => {
+//Concept 2
+const HeroSection = () => {
+  return (
+    <div className="min-h-screen bg-[url('assets/closeup.jpg')] bg-cover bg-no-repeat">
+      <div className="grid max-w-2/3 mx-auto py-28">
+        <h1 className="text-6xl font-bold text-orange text-shadow-lg text-center mb-4 mt-28">Expand Your Food Budget</h1>
+      </div>
+    </div>
+  )
+}
+
+//Concept 3 - food spread
+const HeroSection2 = () => {
+  return (
+    <div className="min-h-screen bg-[url('assets/spread_white.jpg')] bg-contain bg-right bg-no-repeat">
+      <div className="grid items-center max-w-2/3 mx-30 py-38">
+        <div className="py-16">
+          <h1 className="text-6xl font-bold text-orange mb-4">Get Aid with SNAP</h1>
+          <h2 className="text-3xl font-light text-orange mb-8">Expand Your Food Budget</h2>
+          <Link 
+            onClick={tempHandleScroll} 
+            to=''
+            className="inline-block text-xl font-bold px-8 py-3 mt-4 bg-dark-green rounded-xl text-white transition hover:bg-green-200">I'm Interested</Link>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+//concept 4 - bento boxes
+const HeroSection3 = () => {
+  return (
+    <div className="max-h-screen grid grid-cols-2 bg-orange-50">
+      <div className="">
+        <div className="grid items-center mx-28 py-48">
+          <div className="py-16">
+            <h1 className="text-6xl font-bold text-orange mb-4">Get Aid with SNAP</h1>
+            <h2 className="text-3xl font-light text-orange mb-8">Expand Your Food Budget</h2>
+            <Link 
+              onClick={tempHandleScroll} 
+              to=''
+              className="inline-block text-xl font-bold px-8 py-3 mt-4 bg-dark-green rounded-xl text-white transition hover:bg-green-200">I'm Interested</Link>
+          </div>
+        </div>
+      </div>
+      <div className="max-h-screen grid grid-cols-2 grid-rows-4 gap-10">
+        <div className="row-span-2 row-start-2 w-full">
+          <img className="object-cover w-full max-h-full mx-auto rounded-2xl border-1 border-black shadow-2xl" src='https://images.unsplash.com/photo-1505253668822-42074d58a7c6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt=''/>
+        </div>
+        <div className="row-start-4">
+          <img className="object-cover w-full max-h-full mx-auto rounded-2xl border-1 border-black shadow-2xl" src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt=''/>
+        </div>
+        <div className="row-start-1 col-start-2 row-span-2 self-end">
+          <img className="object-cover w-full max-h-full mx-auto rounded-2xl border-1 border-black shadow-2xl" src='https://images.unsplash.com/photo-1432139555190-58524dae6a55?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='' />
+        </div>
+        <div className="row-start-3 col-start-2 row-span-2">
+          <img className="object-cover w-full max-h-full mx-auto rounded-2xl border-1 border-black shadow-2xl" src='https://images.unsplash.com/photo-1712334985979-94946a4e2a6a?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='' />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+
+const Section = ({header, para, para2, linkText, linkTo, backgroundColor, icon, icon2}) => {
   return (
     <div className={`${backgroundColor} p-12 inset-shadow-sm`}>
       <div className="w-2/3 mx-auto">
@@ -76,7 +142,7 @@ const EstimateStatSection = () => {
       <h4 className="text-7xl font-extrabold my-6 text-orange">$468</h4>
       <h3 className="text-4xl font-light">In Benefits On Average</h3> */}
       <h3 className="text-3xl mb-16 font-bold">The Gain</h3>
-      <div className="w-2/3 mx-auto grid grid-cols-2">
+      <div className="w-2/3 mx-auto space-y-12 md:grid grid-cols-2">
         <div>
           <div className="w-fit mx-auto">
             <IconContext.Provider value={{size: '6rem'}}>
@@ -101,23 +167,9 @@ const EstimateStatSection = () => {
 }
 
 const LandingPage = () => {
-  const textConstants = {
-    nearbyStores: {
-      header: 'Find Nearby Stores',
-      para: "If you're getting benefits but you don't know where to use them, you can locate SNAP-eligible near you with our locator tool.",
-      para2: "Our tool helps you find food sources near you, from grocery stores to farmer's markets and everything in-between, with just the click of a button.",
-      linkText: 'Explore'
-    },
-    apply: {
-      header: 'Start Saving Today',
-      para: "How do you apply? You'll need proof of identification, income, and residency. Don't worry, our in-app Agent will help you through your SNAP Application and answer any tough questions on-demand.",
-      para2: 'Ready to send an application and give your budget a boost? Apply for SNAP Today.',
-      linkText: 'Apply Now'
-    }
-  }
 
 const storesCard = {
-  ...textConstants['nearbyStores'],
+  ...landingTextConstants['nearbyStores'],
   linkTo: '/stores',
   backgroundColor: 'bg-green-100',
   icon: <FcShop />,
@@ -125,29 +177,19 @@ const storesCard = {
 }
 
 const applyCard = {
-  ...textConstants['apply'],
+  ...landingTextConstants['apply'],
   linkTo: '/application',
   backgroundColor: 'bg-orange-100',
   icon: <FcSurvey />,
   icon2: <FcApproval />
 }
 
+  //13.7% of people living in Miami, Florida are food insecure, and the SNAP program has a 50% enrollment rate there. This leaves over 100k people food insecure and without assistance since they're not able to leverage these benefits.
+  //Our solution is centered around helping SNAP-eligible Miamians in poverty to access and use these benefits most effectively to alleviate financial burden. We aim to onboard and assist!
   return (
     <div className="min-h-screen font-nunito text-dark-green">
-      {/* Title Section */}
-      {/* <div className="h-1/2 text-center p-8">
-        <h1 className="text-5xl md:text-6xl font-extrabold text-dark-green">SNAP Benefits Aid Tool</h1>
-        <h2 className="text-xl md:text-2xl font-semibold text-dark-green mt-2">
-          Make Your Benefits Work For You
-        </h2>
-      </div> */}
-      <Hero />
-
-      {/* Two-Column Info Section */}
+      <HeroSection2 />
       <div className="">
-        {/* <div className="max-w-[650px] shadow-2xl">
-            <img className="rounded-2xl" src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
-        </div> */}
         <div>
           <p className="text-xl p-18 font-light inset-shadow-sm">13.7% of people living in Miami, Florida are food insecure, and the SNAP program has a 50% enrollment rate there. This leaves over <b className="font-semibold">100k people</b> food insecure and without assistance since they're not able to leverage these benefits.</p>
         </div>
@@ -155,25 +197,6 @@ const applyCard = {
           <Section {...storesCard}/>
           <EstimateStatSection />
           <Section {...applyCard}/>
-
-            {/* Problem Box */}
-            {/* <div className="bg-cream rounded-lg shadow-md p-6 max-w-md text-center">
-            <h3 className="text-lg md:text-2xl font-semibold mb-4">The Problem</h3>
-            <p className="text-sm md:text-base">
-                13.7% of people living in Miami, Florida are food insecure, and the SNAP program has a 50% enrollment rate there. This leaves over 100k people food insecure and without assistance since they're not able to leverage these benefits.
-            </p>
-            </div> */}
-
-            {/* Mission Box */}
-            {/* <div className="bg-cream rounded-lg shadow-md p-6 max-w-md text-center">
-            <h3 className="text-lg md:text-2xl font-semibold mb-4">Our Mission</h3>
-            <p className="text-sm md:text-base">
-                Our solution is centered around helping SNAP-eligible Miamians in poverty to access and use these benefits most effectively to alleviate financial burden. We aim to onboard and assist!
-            </p>
-            </div> */}
-        </div>
-        <div>
-
         </div>
       </div>
     </div>

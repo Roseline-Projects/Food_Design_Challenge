@@ -137,11 +137,11 @@ const Section = ({header, para, para2, linkText, linkTo, backgroundColor, icon, 
 
 const EstimateStatSection = () => {
   return (
-    <div className="text-center space-y-4 p-8"> {/* light background color? spans end to end*/}
+    <div className="text-center space-y-4 p-2"> {/* light background color? spans end to end*/}
       {/* <h3 className="text-4xl font-light">Families in Miami Receive</h3>
       <h4 className="text-7xl font-extrabold my-6 text-orange">$468</h4>
       <h3 className="text-4xl font-light">In Benefits On Average</h3> */}
-      <h3 className="text-3xl mb-16 font-bold">The Gain</h3>
+      <h3 className="text-4xl mb-4 font-bold">The Gain</h3>
       <div className="w-2/3 mx-auto space-y-12 md:grid grid-cols-2">
         <div>
           <div className="w-fit mx-auto">
@@ -184,14 +184,14 @@ const applyCard = {
   icon2: <FcApproval />
 }
 
-  //13.7% of people living in Miami, Florida are food insecure, and the SNAP program has a 50% enrollment rate there. This leaves over 100k people food insecure and without assistance since they're not able to leverage these benefits.
+  //13.7% of people living in Miami, Florida are food insecure, and the SNAP program has a 50% enrollment rate there. This leaves over 100,000 people food insecure and without assistance since they're not able to leverage these benefits.
   //Our solution is centered around helping SNAP-eligible Miamians in poverty to access and use these benefits most effectively to alleviate financial burden. We aim to onboard and assist!
   return (
     <div className="min-h-screen font-nunito text-dark-green">
       <HeroSection2 />
       <div className="">
         <div>
-          <p className="text-xl p-18 font-light inset-shadow-sm">13.7% of people living in Miami, Florida are food insecure, and the SNAP program has a 50% enrollment rate there. This leaves over <b className="font-semibold">100k people</b> food insecure and without assistance since they're not able to leverage these benefits.</p>
+          <p className="text-xl p-18 font-light inset-shadow-sm">13.7% of people living in Miami, Florida are food insecure, and the SNAP program has a 50% enrollment rate there. This leaves over <b className="font-semibold">100,000 people</b> food insecure and without assistance since they're not able to leverage these benefits.</p>
         </div>
         <div id="info-section" className="space-y-10">
           <Section {...storesCard}/>

@@ -8,9 +8,9 @@ import { stepCardInfo } from "../constants/TextConstants";
 //Page Header
 const Header = () => {
   return(
-    <div className="pt-12 bg-orange-300">
+    <div className="pt-10 bg-orange-300">
       <div className="relative bg-orange-300 pb-6 lg:pb-0">
-        <h1 className="lg:absolute top-18 left-0 pl-18 md:px-12 text-4xl md:text-7xl font-bold">Let's Get Started</h1>
+        <h1 className="lg:absolute top-1 left-0 pl-18 text-white md:px-12 text-4xl md:text-7xl font-bold">Let's Get Started</h1>
         <svg className="hidden lg:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319"><path fill="#fff" fillOpacity="1" d="M0,288L80,282.7C160,277,320,267,480,240C640,213,800,171,960,160C1120,149,1280,171,1360,181.3L1440,192L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
         {/* <svg className="block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319"><path fill="#fff" fill-opacity="1" d="M0,256L48,256C96,256,192,256,288,245.3C384,235,480,213,576,213.3C672,213,768,235,864,256C960,277,1056,299,1152,282.7C1248,267,1344,213,1392,186.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg> */}
       </div>
@@ -24,7 +24,7 @@ const DuringSection = () => {
   return(
     <section className="bg-white shadow-sm p-12 my-14 rounded-2xl">
       <h3 className="text-2xl sm:text-4xl text-dark-green font-bold text-center mb-10">During Your Application</h3>
-      <div className="bg-green-100 rounded-2xl px-10 py-16 md:flex items-center gap-10 shadow-sm">
+      <div className="rounded-2xl px-10 py-16 md:flex items-center gap-10 shadow-sm">
         <div className="size-[54px] rounded-full mb-10 md:mb-0">
           <IconContext.Provider value={{color: '#ED8530', size:'5rem'}}>
             <LuSparkles />
@@ -103,8 +103,8 @@ const SnapInfoPage = () => {
                 How does it work?
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                <div className="space-y-4 p-6 rounded-xl hover:bg-green-50 transition-colors duration-300 flex flex-col items-center md:items-start text-center md:text-left">
-                  <div className="bg-green-100 p-4 rounded-full mb-2">
+                <div className="space-y-4 p-6 rounded-xl hover:shadow-md transition-colors duration-300 flex flex-col items-center md:items-start text-center md:text-left">
+                  <div className="p-4 rounded-full mb-2">
                     <img
                       src="/icons/apply.png"
                       alt="Apply"
@@ -119,8 +119,8 @@ const SnapInfoPage = () => {
                     eligibility interview.
                   </p>
                 </div>
-                <div className="space-y-4 p-6 rounded-xl hover:bg-green-50 transition-colors duration-300 flex flex-col items-center md:items-start text-center md:text-left">
-                  <div className="bg-green-100 p-4 rounded-full mb-2">
+                <div className="space-y-4 p-6 rounded-xl hover:shadow-md transition-colors duration-300 flex flex-col items-center md:items-start text-center md:text-left">
+                  <div className="p-4 rounded-full mb-2">
                     <img
                       src="/icons/creditcard.png"
                       alt="Get benefits"
@@ -135,8 +135,8 @@ const SnapInfoPage = () => {
                     within 10 days.
                   </p>
                 </div>
-                <div className="space-y-4 p-6 rounded-xl hover:bg-green-50 transition-colors duration-300 flex flex-col items-center md:items-start text-center md:text-left">
-                  <div className="bg-green-100 p-4 rounded-full mb-2">
+                <div className="space-y-4 p-6 rounded-xl hover:shadow-md transition-colors duration-300 flex flex-col items-center md:items-start text-center md:text-left">
+                  <div className="p-4 rounded-full mb-2">
                     <img
                       src="/icons/groceries.png"
                       alt="Buy groceries"
@@ -158,7 +158,6 @@ const SnapInfoPage = () => {
                   </p>
                 </div>
               </div>
-              <button className="block mx-auto mt-6 mb-2 px-8 py-3 rounded-full bg-[#2D6A4F] hover:bg-[#1B4332] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-lg flex items-center space-x-2 transform hover:scale-105">Got It</button>
             </section>
     
 
@@ -168,7 +167,7 @@ const SnapInfoPage = () => {
               </h2>
               <div className="w-3/4 mx-auto">
                 <div className="w-fit mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-10">
-                  <div className="p-6 rounded-xl space-y-4 flex flex-col items-center text-center hover:shadow-md hover:bg-green-50 transition-all duration-300">
+                  <div className="p-6 rounded-xl space-y-4 flex flex-col items-center text-center hover:shadow-md  transition-all duration-300">
                     <div className="bg-white p-4 rounded-full shadow-sm">
                       <img
                         src="/icons/ID.png"
@@ -180,7 +179,7 @@ const SnapInfoPage = () => {
                       A copy of your ID
                     </p>
                   </div>
-                  <div className="p-6 rounded-xl space-y-4 flex flex-col items-center text-center hover:shadow-md hover:bg-green-50 transition-all duration-300">
+                  <div className="p-6 rounded-xl space-y-4 flex flex-col items-center text-center hover:shadow-md  transition-all duration-300">
                     <div className="bg-white p-4 rounded-full shadow-sm">
                       <img
                         src="/icons/income.png"
@@ -192,7 +191,7 @@ const SnapInfoPage = () => {
                       Proof of any income
                     </p>
                   </div>
-                  <div className="p-6 rounded-xl space-y-4 flex flex-col items-center text-center hover:shadow-md hover:bg-green-50 transition-all duration-300">
+                  <div className="p-6 rounded-xl space-y-4 flex flex-col items-center text-center hover:shadow-md  transition-all duration-300">
                     <div className="bg-white p-4 rounded-full shadow-sm">
                       <img
                         src="/icons/status.png"

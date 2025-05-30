@@ -7,41 +7,14 @@ import { FcHome } from "react-icons/fc";
 import { FcAbout } from "react-icons/fc";
 import { FcSurvey } from "react-icons/fc";
 import { landingTextConstants } from "../constants/TextConstants";
+import { animate, motion, useInView, useMotionValue, useTransform, useAnimate } from "motion/react"
+import { useEffect, useRef } from "react";
 //bg-[url(https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)]
 const tempHandleScroll = () => {
   const section = document.getElementById('info-section')
   section.scrollIntoView({behavior: "smooth"})
 }
 
-//Original - scrapped
-const Hero = () => { {/* Completely overhaul format , no gray */}
-  return (
-    <div className={`bg-gray-200 relative z-20 bg-no-repeat bg-right bg-[url('assets/heroimg_resize.jpg')]`}>
-      <div className="absolute inset-0 -z-10 bg-gray-900 opacity-60"></div>
-      <div className="grid max-w-2/3 mx-auto py-28">
-        <div className="">
-          <h1 className="text-6xl font-bold text-orange mb-4">Expand Your Food Budget <br/> with SNAP</h1>
-          <h2 className="text-3xl font-light text-orange mb-8">Aspire, Apply, Arrive</h2>
-          <Link 
-            onClick={tempHandleScroll} 
-            to=''
-            className="inline-block text-xl font-bold px-8 py-3 mt-4 bg-dark-green rounded-xl text-white transition hover:bg-green-200">I'm Interested</Link>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-//Concept 2
-const HeroSection = () => {
-  return (
-    <div className="min-h-screen bg-[url('assets/closeup.jpg')] bg-cover bg-no-repeat">
-      <div className="grid max-w-2/3 mx-auto py-28">
-        <h1 className="text-6xl font-bold text-orange text-shadow-lg text-center mb-4 mt-28">Expand Your Food Budget</h1>
-      </div>
-    </div>
-  )
-}
 
 //Concept 3 - food spread
 const HeroSection2 = () => {
@@ -61,44 +34,14 @@ const HeroSection2 = () => {
   )
 }
 
-//concept 4 - bento boxes
-const HeroSection3 = () => {
-  return (
-    <div className="max-h-screen grid grid-cols-2 bg-orange-50">
-      <div className="">
-        <div className="grid items-center mx-28 py-48">
-          <div className="py-16">
-            <h1 className="text-6xl font-bold text-orange mb-4">Get Aid with SNAP</h1>
-            <h2 className="text-3xl font-light text-orange mb-8">Expand Your Food Budget</h2>
-            <Link 
-              onClick={tempHandleScroll} 
-              to=''
-              className="inline-block text-xl font-bold px-8 py-3 mt-4 bg-dark-green rounded-xl text-white transition hover:bg-green-200">I'm Interested</Link>
-          </div>
-        </div>
-      </div>
-      <div className="max-h-screen grid grid-cols-2 grid-rows-4 gap-10">
-        <div className="row-span-2 row-start-2 w-full">
-          <img className="object-cover w-full max-h-full mx-auto rounded-2xl border-1 border-black shadow-2xl" src='https://images.unsplash.com/photo-1505253668822-42074d58a7c6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt=''/>
-        </div>
-        <div className="row-start-4">
-          <img className="object-cover w-full max-h-full mx-auto rounded-2xl border-1 border-black shadow-2xl" src='https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt=''/>
-        </div>
-        <div className="row-start-1 col-start-2 row-span-2 self-end">
-          <img className="object-cover w-full max-h-full mx-auto rounded-2xl border-1 border-black shadow-2xl" src='https://images.unsplash.com/photo-1432139555190-58524dae6a55?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='' />
-        </div>
-        <div className="row-start-3 col-start-2 row-span-2">
-          <img className="object-cover w-full max-h-full mx-auto rounded-2xl border-1 border-black shadow-2xl" src='https://images.unsplash.com/photo-1712334985979-94946a4e2a6a?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='' />
-        </div>
-      </div>
-    </div>
-  )
-}
-
-
 const Section = ({header, para, para2, linkText, linkTo, backgroundColor, icon, icon2}) => {
   return (
-    <div className={`${backgroundColor} p-12 inset-shadow-sm`}>
+    <motion.div 
+      initial={{opacity: 0}}
+      whileInView={{opacity: 1}}
+      className={`${backgroundColor} p-12 inset-shadow-sm`}
+      viewport={{amount: 0.6, once: true}}
+    >
       <div className="w-2/3 mx-auto">
       <h3 className="text-3xl font-bold mb-4 w-fit">{header}</h3> {/* XL text bold left aligned */}
       <div className="mb-4">
@@ -131,11 +74,37 @@ const Section = ({header, para, para2, linkText, linkTo, backgroundColor, icon, 
       </div>
       </div>
 
-    </div>
+    </motion.div>
   )
 }
 
 const EstimateStatSection = () => {
+  const ref = useRef(null)
+  const isInView = useInView(ref, {amount: "all", once: true})
+  const count = useMotionValue(0)
+  const rounded = useTransform(() => Math.round(count.get()))
+  const controls = animate(count, 274, {duration: 4, onUpdate: latest => console.log(latest)})
+  controls.pause()
+  //very strange solution...
+
+  useEffect(() => {
+    if(isInView == true) {
+      controls.play()
+      return () => controls.stop()
+    }
+    console.log(isInView)
+  }, [isInView])
+
+  const numberStyle = {
+    fontSize: "4.5rem",
+    color: "#ED8530",
+    fontWeight: 800,
+    marginTop: '1.5rem',
+    marginBottom: '1.5rem',
+    fontFamily: "Nunito, sans-serif",
+    width: 'fit-content'
+  }
+
   return (
     <div className="text-center space-y-4 p-8"> {/* light background color? spans end to end*/}
       {/* <h3 className="text-4xl font-light">Families in Miami Receive</h3>
@@ -149,7 +118,16 @@ const EstimateStatSection = () => {
               <FcHome />
             </IconContext.Provider>
           </div>
-          <h4 className="text-7xl font-extrabold my-6 text-orange">$274/mo</h4>
+            {/* <h4 className="text-7xl font-extrabold my-6 text-orange">$276/mo</h4> */}
+            <h4 ref={ref}>
+              <span className="text-7xl font-extrabold my-6 text-orange">$</span>
+              <motion.span 
+                style={numberStyle}
+              >
+                {rounded}
+              </motion.span>
+              <span className="text-7xl font-extrabold my-6 text-orange">/mo</span>
+            </h4>
           <h3 className="text-lg font-light">Average In Benefits For Miami Households</h3>
         </div>
         <div>

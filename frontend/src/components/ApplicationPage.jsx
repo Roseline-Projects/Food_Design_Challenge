@@ -92,8 +92,6 @@ const SnapInfoPage = () => {
     return (
       <div className="bg-gradient-to-b from-white to-gray-50 text-gray-800 py-12 space-y-16 min-h-screen">
         <Header />
-
-
         <div className="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24">
           <div className="max-w-7xl mx-auto">
 

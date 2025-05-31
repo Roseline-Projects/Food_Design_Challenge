@@ -11,13 +11,16 @@ const tempHandleScroll = () => {
 // Mobile-friendly hero section
 const HeroSection2 = () => {
   return (
-    <div className="min-h-[50vh] md:min-h-[280px] bg-[url('assets/spread_white.jpg')] pt-16 bg-cover bg-right bg-no-repeat">
-      <div className="px-4 py-24 md:px-0 md:grid md:items-center md:max-w-2/3 md:mx-30 md:py-25">
+    <div className="min-h-[50vh] md:min-h-[280px] bg-[url('assets/spread_white.jpg')] pt-16 bg-cover bg-right bg-no-repeat relative ">
+      {/* Grey tint overlay */}
+      <div className="absolute inset-0 bg-gray-900 opacity-60 pointer-events-none"></div>
+      
+      <div className="px-4 py-24 md:px-0 md:grid md:items-center md:max-w-2/3 md:mx-30 md:py-25 relative z-20">
         <div className="py-8 md:py-16">
-          <h1 className="text-3xl md:text-6xl font-bold text-orange mb-2 md:mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 md:mb-4">
             Get Aid with SNAP
           </h1>
-          <h2 className="text-xl md:text-3xl font-light text-orange mb-4 md:mb-8">
+          <h2 className="text-xl md:text-3xl font-light text-white mb-4 md:mb-8">
             Expand Your Food Budget
           </h2>
           <Link
@@ -32,6 +35,7 @@ const HeroSection2 = () => {
     </div>
   );
 };
+
 
 const Section = ({
   header,
@@ -50,7 +54,7 @@ const Section = ({
         <div className="mb-4">
           <div className="flex flex-col md:flex-row items-center gap-2">
             <div className="mb-2 md:mb-0">
-              <IconContext.Provider value={{ size: "5rem", className: "md:text-8xl" }}>
+              <IconContext.Provider value={{ className: "w-24 h-24" }}>
                 {icon}
               </IconContext.Provider>
             </div>
@@ -67,7 +71,7 @@ const Section = ({
         <div className="mt-2">
           <div className="flex flex-col md:flex-row items-center gap-2">
             <div className="mb-2 md:mb-0">
-              <IconContext.Provider value={{ size: "5rem", className: "md:text-8xl" }}>
+              <IconContext.Provider value={{ className: "w-24 h-24" }}>
                 {icon2}
               </IconContext.Provider>
             </div>
@@ -96,7 +100,7 @@ const EstimateStatSection = () => {
       <div className="w-full md:w-2/3 mx-auto space-y-12 md:grid md:grid-cols-2 md:space-y-0">
         <div className="mb-8 md:mb-0">
           <div className="w-fit mx-auto">
-            <IconContext.Provider value={{ size: "4rem", className: "md:text-6xl" }}>
+            <IconContext.Provider value={{ className: "w-24 h-24" }}>
               <FcHome />
             </IconContext.Provider>
           </div>
@@ -109,7 +113,7 @@ const EstimateStatSection = () => {
         </div>
         <div>
           <div className="w-fit mx-auto">
-            <IconContext.Provider value={{ size: "4rem", className: "md:text-6xl" }}>
+            <IconContext.Provider value={{ className: "w-24 h-24" }}>
               <FcPaid />
             </IconContext.Provider>
           </div>
@@ -147,7 +151,7 @@ const LandingPage = () => {
       <HeroSection2 />
       <div>
         <div>
-          <p className="text-lg md:text-xl p-4 md:p-18 font-light inset-shadow-sm">
+          <p className="text-lg md:text-xl bg-orange-100 p-4 md:p-18 font-medium inset-shadow-sm">
             13.7% of people living in Miami, Florida are food insecure, and the
             SNAP program has a 50% enrollment rate there. This leaves over{" "}
             <b className="font-semibold">100,000 people</b> food insecure and

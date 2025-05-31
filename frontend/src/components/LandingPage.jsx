@@ -51,7 +51,12 @@ const Section = ({
   icon2,
 }) => {
   return (
-    <div className={`${backgroundColor} p-4 md:p-12 inset-shadow-sm`}>
+    <motion.div 
+      initial={{opacity: 0}}
+      whileInView={{opacity: 1}}
+      viewport={{amount: 0.4, once: true}}
+      className={`${backgroundColor} p-4 md:p-12 inset-shadow-sm`}
+    >
       <div className="w-full md:w-2/3 mx-auto">
         <h3 className="text-2xl md:text-3xl font-bold mb-4 w-fit">{header}</h3>
         <div className="mb-4">
@@ -92,7 +97,7 @@ const Section = ({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -123,7 +128,7 @@ const EstimateStatSection = () => {
               <FcHome />
             </IconContext.Provider>
           </div>
-            <h4 
+            <h4
               ref={ref}
               className="text-5xl md:text-7xl font-extrabold my-3 md:my-6 text-orange"
             >

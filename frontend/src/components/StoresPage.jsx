@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import snapStoreData from "../constants/stores";
-import NavBar from "./NavBar";
+import { FaChevronDown } from "react-icons/fa"
+import { FaChevronUp } from "react-icons/fa"
 
 /**
  * Calculates the distance between two geographic coordinates using the Haversine formula.
@@ -39,6 +40,7 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
  * @param {number} [props.distance] - Distance to the store in miles (optional)
  * @returns {JSX.Element} - Rendered card component
  */
+
 const Card = ({
   storeName,
   storeStreetAddress,
@@ -54,28 +56,28 @@ const Card = ({
     Type: storeType,
     ...(distance !== undefined && { Distance: `${distance.toFixed(1)} miles` })
   };
+  //#fdba74
   
+  function titleCase(str) {
+    const stringWithoutNumbers = str.replace(/\d/g, '');
+    return stringWithoutNumbers.toLowerCase().replace(/(?:^|\s)\w/g, function(match) {
+        return match.toUpperCase();
+    });
+}
   return (
-    <div className="rounded-xl h-full bg-cream border">
-      <div className="h-1/2 overflow-hidden">
-        <img
-          className="object-cover size-full rounded-t-xl max-h-[200px]"
-          src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          alt={storeName}
-        />
-      </div>
-      <div className="p-4 flex flex-col items-stretch">
-        <h3 className="text-lg font-semibold text-green-800 mt-2 mb-4">
-          {storeName}
-        </h3>
-        <ul className="space-y-2">
-          {Object.entries(details).map((item, index) => (
-            <li className="" key={index}>
-              <b>{item[0]}</b>: {item[1]}
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className="relative -z-10 bg-orange-50 bg-[url('assets/shopping2.svg')] bg-contain bg-no-repeat bg-right rounded-xl border-1 border-orange-200 shadow-md">
+        <div className="relative p-6 lg:p-8">
+          <h3 className="flex items-center gap-2 text-2xl font-semibold mb-3 w-fit">
+            {titleCase(storeName)}
+            <span className="inline-flex items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset">Eligible</span>
+          </h3>
+          {console.log(details)}
+          <p className="mb-1 text-lg">{storeStreetAddress}, {city} {zipCode}</p>
+          <p className="font-light mb-2 text-xl">{storeType}</p>
+          <p className="text-green-900">{details["Distance"]}</p>
+        </div>
+        <svg className="absolute bottom-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fdba74" fill-opacity="1" d="M0,320L80,309.3C160,299,320,277,480,272C640,267,800,277,960,272C1120,267,1280,245,1360,234.7L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+        {/* <button className="absolute bottom-3 right-3 px-3 py-2 ring ring-orange-400 rounded-xl bg-white font-semibold cursor-pointer">Transport</button> */}
     </div>
   );
 };
@@ -135,17 +137,21 @@ function Dropdown({ options, onSelect, selectedValue, setSelectedValue }) {
 
   return (
     <div
-      className="relative bg-white rounded-2xl border px-4 py-2 my-2"
+      className="relative px-4 py-2 my-2"
       ref={dropdownRef}
     >
-      <button onClick={handleToggle}>
-        {selectedValue || "Select an option"}
+      <button 
+        className={`${isOpen ? 'ring' : ""} flex items-center w-fit px-6 py-3 bg-green-50 rounded-md shadow-md cursor-pointer`} 
+        onClick={handleToggle}
+      >
+        {selectedValue || "Select an option"} 
+        <span className="flex items-center justify-center ml-4"> {isOpen ? <FaChevronUp /> : <FaChevronDown/> } </span>
       </button>
       {isOpen && (
-        <ul className="absolute z-10 bg-cream px-4 py-2 rounded-2xl shadow-md w-full left-0">
+        <ul className={`${isOpen ? "opacity-100 h-fit-content max-h-[600px]" : "opacity-0 h-0"} absolute z-10 no-scrollbar min-w-full flex flex-col items-center p-2 mt-1 bg-white rounded-xl shadow-md max-h-screen overflow-y-scroll`}>
           {options.map((option) => (
             <li
-              className="text-lg cursor-pointer py-1 hover:text-orange"
+              className="p-2 w-full rounded-md cursor-pointer hover:bg-green-50"
               key={option}
               onClick={() => handleOptionClick(option)}
             >
@@ -257,35 +263,37 @@ const StoresPage = () => {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row max-h-screen">
+      <div className="max-w-11/12 mx-auto">
         {/* Main content area (2/3 width on medium+ screens) */}
-        <div className="w-full md:w-2/3">
-          <div className="mt-20 flex flex-col items-center justify-center">
-            <h1 className="mb-4 text-4xl font-bold text-orange text-center">
-              Search For SNAP Eligible Stores in Miami-Dade
+        <div className="w-full">
+          <div className="mt-20">
+            <h1 className="mb-4 pt-2 text-5xl font-bold text-dark-green">
+              Search For SNAP-Eligible Stores in Miami-Dade
             </h1>
             
             {/* Search options section */}
             <div className="flex flex-col md:flex-row gap-4 items-center">
               {/* City search option */}
-              <div>
-                <label className="text-lg font-semibold">Find by city:
-                  <Dropdown
-                    options={cityList}
-                    onSelect={onCitySelect}
-                    selectedValue={selectedValue}
-                    setSelectedValue={setSelectedValue}
-                  />
-                </label>
+              <div className="flex items-center">
+                <span className="text-lg font-semibold">Find by city:
+                </span>
+                <div className="w-fit">
+                    <Dropdown
+                      options={cityList}
+                      onSelect={onCitySelect}
+                      selectedValue={selectedValue}
+                      setSelectedValue={setSelectedValue}
+                    />
+                </div>
               </div>
               
               {/* Location search option */}
-              <div className="text-center">
-                <p className="text-lg font-semibold mb-2">Or</p>
+              <div className="">
+                <span className="text-lg font-semibold mb-2 mr-6">Or</span>
                 <button 
                   onClick={findNearbyStores}
                   disabled={isLoading}
-                  className="bg-orange hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full transition-colors"
+                  className="bg-green-800 hover:bg-green-600 pointer-cursor text-white font-bold py-3 px-4 rounded-full transition-colors"
                 >
                   {isLoading ? "Finding stores..." : "Find Stores Near Me"}
                 </button>
@@ -299,7 +307,7 @@ const StoresPage = () => {
           {/* Results section - only shown after search */}
           {showResults && (
             <>
-              <h2 className="text-2xl font-semibold text-center mt-6">
+              <h2 className="text-2xl font-semibold mt-6">
                 {filteredStores.length > 0
                   ? searchType === 'city' 
                     ? `Found ${filteredStores.length} stores in ${selectedValue}`
@@ -308,12 +316,12 @@ const StoresPage = () => {
                     ? `No stores found in ${selectedValue}`
                     : "No nearby stores found"}
               </h2>
-              <ul className="my-8 flex flex-col md:flex-row flex-wrap gap-6 md:gap-8 justify-center">
+              <ul className="my-8 grid md:grid-cols-2 items-center justify-center gap-6 md:gap-8">
                 {/* Display up to 6 stores */}
                 {filteredStores.slice(0, 6).map((store) => (
                   <li
                     key={store.recordId}
-                    className="min-w-[280px] max-w-[400px] max-h-[500px] mx-auto md:mx-0"
+                    className="min-w-[280px] w-full mx-auto md:mx-0"
                   >
                     <Card {...store} />
                   </li>
@@ -321,22 +329,6 @@ const StoresPage = () => {
               </ul>
             </>
           )}
-        </div>
-        
-        {/* Decorative sidebar (1/3 width on medium+ screens) */}
-        <div className="w-full md:w-1/3 min-h-[300px] md:min-h-screen relative overflow-hidden">
-          <img
-            className="w-full h-full object-cover object-center opacity-80"
-            src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="Decorative food image"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-green-900/70 to-transparent"></div>
-          <div className="absolute bottom-8 left-8 right-8 text-white">
-            <h3 className="text-2xl font-bold mb-2">Ready to save?</h3>
-            <p className="text-indigo-100">
-              Find the best deals and options for your budget
-            </p>
-          </div>
         </div>
       </div>
     </>

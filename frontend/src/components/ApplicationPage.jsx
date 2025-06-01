@@ -6,11 +6,12 @@ import { stepCardInfo } from "../constants/TextConstants";
 // Page Header
 const Header = () => {
   return (
-    <div className="pt-6 sm:pt-10 bg-orange-300">
-      <div className="relative bg-orange-300">
-        <h1 className="text-center relative pt-6  lg:text-left lg:absolute top-1 left-0 lg:pl-18 text-white px-4 md:px-12 text-3xl sm:text-4xl md:text-7xl font-bold">
+    <div className="pt-6 mt-10 md:mt-0 sm:pt-10 bg-orange-300 mb-0">
+      <div className="relative bg-orange-300 pb-8">
+        <h1 className="text-center relative z-10 pt-6 lg:pb-16 lg:text-left lg:pl-18 text-white px-4 md:px-12 text-3xl sm:text-4xl md:text-7xl font-bold">
           Let's Get Started
         </h1>
+        <svg className="absolute bottom-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319"><path fill="#fff" fillOpacity="1" d="M0,288L120,282.7C240,277,480,267,720,266.7C960,267,1200,277,1320,282.7L1440,288L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path></svg>
       </div>
     </div>
   );
@@ -93,7 +94,7 @@ const AfterSection = () => {
 // Main
 const SnapInfoPage = () => {
   return (
-    <div className="bg-gradient-to-b from-white to-gray-50 text-gray-800 py-6 sm:py-12 space-y-8 sm:space-y-16 min-h-screen">
+    <div className="bg-gradient-to-b from-white to-gray-50 text-gray-800 sm:py-12 space-y-8 sm:space-y-16 min-h-screen">
       <Header />
       <div className="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24">
         <div className="max-w-7xl mx-auto">

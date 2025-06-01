@@ -24,19 +24,19 @@ const Chatbot = () => {
         }
         if(isOpen && messages.length == 2) {
             setTimeout(() => {
-                const botResponse = { sender: 'bot', text: `¡No hay problema! Ingresos: La mayoría de los hogares deben tener un límite de ingresos brutos igual o inferior al 200 % del Nivel Federal de Pobreza (FPL).` };
+                const botResponse = { sender: 'bot', text: `¡No hay problema! "Ciudadanía: Las personas deben ser ciudadanos estadounidenses o tener un estatus de no ciudadano calificado." (No problem! "Citizenship - Individuals must be a U.S. citizen or have a qualified noncitizen status.")` };
                 setMessages((prevMessages) => [...prevMessages, botResponse]);
         }, 1000); // Simulate bot thinking time
         }
         if(isOpen && messages.length == 4) {
             setTimeout(() => {
-                const botResponse = { sender: 'bot', text: `¡Déjame explicarte! Podemos empezar con una deducción del 20%, según lo permitido por SNAP, para un nuevo total de $1200, y seguir a partir de ahí. ¿Cuántos miembros tiene su hogar? ¿Tiene algún dependiente, como un niño? ¿Cuánto gasta usted en gastos del hogar y servicios públicos?` };
+                const botResponse = { sender: 'bot', text: `Entiendo que puede ser complicado. Los estatus de protección son elegibles, incluyendo a titulares de tarjetas de residencia permanente, refugiados y solicitantes de asilo. (I understand, it can be complicated! Protected statuses are qualified, including green-card holders, refugees, and asylum seekers.)` };
                 setMessages((prevMessages) => [...prevMessages, botResponse]);
             }, 1000)
         }
         if(isOpen && messages.length == 6) {
             setTimeout(() => {
-                const botResponse = { sender: 'bot', text: `Bien. Como su hogar es de 3 personas, también podemos deducir $204, lo que suma un total de $1096. La mitad de sus ingresos es de $548, que es menos que su alquiler de $800. Ahora podemos deducir el excedente, que suma un total de $844. El dinero gastado en cuidado infantil cuenta, así que ¿qué gastos tiene?` };
+                const botResponse = { sender: 'bot', text: `¡Déjame explicarte! Podemos empezar con una deducción del 20%, según lo permitido por SNAP, para un nuevo total de $1200, y seguir a partir de ahí. ¿Cuántos miembros tiene su hogar? ¿Tiene algún dependiente, como un niño? ¿Cuánto gasta usted en gastos del hogar y servicios públicos? (Let me walk you through it! We can start with a 20% deduction as allowed by SNAP for a new total of $1200, and take it from there. How large is your household and do you have a dependent, like a child? How much do you spend on household expenses and utilities?)` };
                 setMessages((prevMessages) => [...prevMessages, botResponse]);
             }, 1000)
         }

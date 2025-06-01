@@ -21,7 +21,7 @@ const HeroSection2 = () => {
       <div className="px-4 py-24 md:px-0 md:grid md:items-center md:max-w-2/3 md:mx-30 md:py-25 relative z-20">
         <div className="py-8 md:py-16">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-2 md:mb-4">
-            Get Aid with SNAP
+            Get Aid with your SNAP process
           </h1>
           <h2 className="text-xl md:text-3xl font-light text-white mb-4 md:mb-8">
             Expand Your Food Budget

@@ -2,6 +2,7 @@ import { LuSparkles } from "react-icons/lu";
 import { IconContext } from "react-icons/lib";
 import { Link } from "react-router";
 import { stepCardInfo } from "../constants/TextConstants";
+import Chatbot from "./Chatbot";
 
 // Page Header
 const Header = () => {
@@ -115,8 +116,7 @@ const SnapInfoPage = () => {
                   1. Apply
                 </h3>
                 <p className="text-base sm:text-xl text-gray-700">
-                  Your local office will call you within 1–2 weeks for an
-                  eligibility interview.
+                  You'll be interviewed by local officials to determine eligibility within 1-2 weeks.
                 </p>
               </div>
               <div className="space-y-3 sm:space-y-4 p-4 sm:p-6 rounded-xl hover:shadow-md transition-colors duration-300 flex flex-col items-center md:items-start text-center md:text-left">
@@ -131,8 +131,7 @@ const SnapInfoPage = () => {
                   2. Get benefits
                 </h3>
                 <p className="text-base sm:text-xl text-gray-700">
-                  If approved, you'll get a SNAP card for groceries — usually
-                  within 10 days.
+                  If approved, you'll get an EBT card to use your benefits for groceries.
                 </p>
               </div>
               <div className="space-y-3 sm:space-y-4 p-4 sm:p-6 rounded-xl hover:shadow-md transition-colors duration-300 flex flex-col items-center md:items-start text-center md:text-left">
@@ -147,14 +146,15 @@ const SnapInfoPage = () => {
                   3. Buy groceries
                 </h3>
                 <p className="text-base sm:text-xl text-gray-700">
-                  Use your SNAP card at most grocery stores and{" "}
+                  Use your SNAP card at supermarkets, stores, {" "}
                   <a
                     href="https://www.fns.usda.gov/ebt/where-can-i-use-ebt"
                     className="text-green-700 underline hover:text-green-800 transition-colors"
                   >
-                    farmers' markets
+                    farmers' markets.
                   </a>
-                  .
+                  {" "}
+                  You can locate them using our <Link className="underline text-green-700 hover:text-green-800 transition-colors" to='/stores'>store locator tool</Link>.
                 </p>
               </div>
             </div>
@@ -226,9 +226,9 @@ const SnapInfoPage = () => {
               </button>
             </div>
           </section>
-
           <DuringSection />
           <AfterSection />
+          <Chatbot />
         </div>
       </div>
     </div>

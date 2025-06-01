@@ -41,7 +41,7 @@ const DuringSection = () => {
             will be available to help you 24/7!
             <br />
             <br />
-            <b>Access it using the icon in the bottom left corner.</b>
+            <b>Access it using the icon in the bottom right corner.</b>
           </p>
         </div>
       </div>

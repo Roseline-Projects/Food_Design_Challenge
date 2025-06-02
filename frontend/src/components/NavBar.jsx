@@ -1,8 +1,12 @@
 import { Link, Outlet } from "react-router";
 import { useState } from "react";
+import { useLanguage } from './Translator';
+import { navBarTextConstants } from "../constants/TextConstants";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {language} = useLanguage()
+  const text = navBarTextConstants[language]
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -17,7 +21,7 @@ const NavBar = () => {
             to="/"
             className="text-white font-bold text-2xl md:text-3xl relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
-            SNAPWAY
+            {text['snapway']}
           </Link>
         </div>
 
@@ -27,19 +31,19 @@ const NavBar = () => {
             to="/"
             className="text-white text-base md:text-lg font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
-            Home
+            {text['home']}
           </Link>
           <Link
             to="/application"
             className="text-white text-base md:text-lg font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
-            Apply
+            {text['apply']}
           </Link>
           <Link
             to="/stores"
             className="text-white text-base md:text-lg font-medium relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-white after:transition-all after:duration-300 hover:after:w-full"
           >
-            Eligible Stores
+            {text['stores']}
           </Link>
         </div>
 
@@ -86,21 +90,21 @@ const NavBar = () => {
               className="text-white text-lg font-medium py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Home
+              {text['home']}
             </Link>
             <Link
               to="/application"
               className="text-white text-lg font-medium py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Apply
+              {text['apply']}
             </Link>
             <Link
               to="/stores"
               className="text-white text-lg font-medium py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Eligible Stores
+              {text['stores']}
             </Link>
           </div>
         </div>

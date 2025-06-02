@@ -299,3 +299,24 @@ export const storesTextConstants = {
     option: 'Chwazi yon Opsyon'
   }
 };
+
+export const navBarTextConstants = {
+  eng: {
+    snapway: "SNAPWAY",
+    home: "Home",
+    apply: "Apply",
+    stores: "Eligible Stores"
+  },
+  span: {
+    snapway: "SNAPWAY",
+    home: "Inicio",
+    apply: "Aplicar",
+    stores: "Tiendas Elegibles"
+  },
+  hc: {
+    snapway: "SNAPWAY",
+    home: "Paj Prensipal",
+    apply: "Aplike",
+    stores: "Magazen ki elijib yo"
+  }
+}

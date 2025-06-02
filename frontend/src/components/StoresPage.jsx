@@ -2,6 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import snapStoreData from "../constants/stores";
 import { FaChevronDown } from "react-icons/fa"
 import { FaChevronUp } from "react-icons/fa"
+import {storesTextConstants} from '../constants/TextConstants.js'
+import { useLanguage } from './Translator';
+import {LanguageSelector} from './Translator';
 
 /**
  * Calculates the distance between two geographic coordinates using the Haversine formula.
@@ -54,10 +57,10 @@ const Card = ({
     City: city,
     Zip: zipCode,
     Type: storeType,
-    ...(distance !== undefined && { Distance: `${distance.toFixed(1)} miles` })
+    ...(distance !== undefined && { Distance: `${distance.toFixed(1)} mi` })
   };
   //#fdba74
-  
+
   function titleCase(str) {
     const stringWithoutNumbers = str.replace(/\d/g, '');
     return stringWithoutNumbers.toLowerCase().replace(/(?:^|\s)\w/g, function(match) {
@@ -69,14 +72,14 @@ const Card = ({
         <div className="relative p-6 lg:p-8">
           <h3 className="flex items-center gap-2 text-2xl font-semibold mb-3 w-fit">
             {titleCase(storeName)}
-            <span className="inline-flex items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset">Eligible</span>
+            <span className="inline-flex items-center rounded-md bg-green-100 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset">SNAP</span>
           </h3>
           {console.log(details)}
           <p className="mb-1 text-lg">{storeStreetAddress}, {city} {zipCode}</p>
           <p className="font-light mb-2 text-xl">{storeType}</p>
           <p className="text-green-900">{details["Distance"]}</p>
         </div>
-        <svg className="absolute bottom-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fdba74" fill-opacity="1" d="M0,320L80,309.3C160,299,320,277,480,272C640,267,800,277,960,272C1120,267,1280,245,1360,234.7L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
+        <svg className="absolute bottom-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fdba74" fillOpacity="1" d="M0,320L80,309.3C160,299,320,277,480,272C640,267,800,277,960,272C1120,267,1280,245,1360,234.7L1440,224L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
         {/* <button className="absolute bottom-3 right-3 px-3 py-2 ring ring-orange-400 rounded-xl bg-white font-semibold cursor-pointer">Transport</button> */}
     </div>
   );
@@ -94,7 +97,7 @@ const Card = ({
  * @param {Function} props.setSelectedValue - Function to update the selected value
  * @returns {JSX.Element} - Rendered dropdown component
  */
-function Dropdown({ options, onSelect, selectedValue, setSelectedValue }) {
+function Dropdown({ options, onSelect, selectedValue, setSelectedValue, lang }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -144,7 +147,7 @@ function Dropdown({ options, onSelect, selectedValue, setSelectedValue }) {
         className={`${isOpen ? 'ring' : ""} flex items-center w-fit px-6 py-3 bg-green-50 rounded-md shadow-md cursor-pointer`} 
         onClick={handleToggle}
       >
-        {selectedValue || "Select an option"} 
+        {selectedValue || `${lang['option']}`} 
         <span className="flex items-center justify-center ml-4"> {isOpen ? <FaChevronUp /> : <FaChevronDown/> } </span>
       </button>
       {isOpen && (
@@ -198,6 +201,8 @@ const StoresPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [locationError, setLocationError] = useState(null);
   const [searchType, setSearchType] = useState(null); // 'city' or 'location'
+  const {language} = useLanguage()
+  const text = storesTextConstants[language]
 
   /**
    * Handles city selection from the dropdown.
@@ -268,14 +273,14 @@ const StoresPage = () => {
         <div className="w-full">
           <div className="mt-20">
             <h1 className="mb-4 pt-2 text-5xl font-bold text-dark-green">
-              Search For SNAP-Eligible Stores in Miami-Dade
+              {text['title']}
             </h1>
             
             {/* Search options section */}
             <div className="flex flex-col md:flex-row gap-4 items-center">
               {/* City search option */}
               <div className="flex items-center">
-                <span className="text-lg font-semibold">Find by city:
+                <span className="text-lg font-semibold">{text['find1']}
                 </span>
                 <div className="w-fit">
                     <Dropdown
@@ -283,19 +288,20 @@ const StoresPage = () => {
                       onSelect={onCitySelect}
                       selectedValue={selectedValue}
                       setSelectedValue={setSelectedValue}
+                      lang={text}
                     />
                 </div>
               </div>
               
               {/* Location search option */}
               <div className="">
-                <span className="text-lg font-semibold mb-2 mr-6">Or</span>
+                <span className="text-lg font-semibold mb-2 mr-6">{text['or']}</span>
                 <button 
                   onClick={findNearbyStores}
                   disabled={isLoading}
                   className="bg-green-800 hover:bg-green-600 pointer-cursor text-white font-bold py-3 px-4 rounded-full transition-colors"
                 >
-                  {isLoading ? "Finding stores..." : "Find Stores Near Me"}
+                  {isLoading ? `${text['findingLoading']}` : `${text['finding']}`}
                 </button>
                 {locationError && (
                   <p className="text-red-500 mt-2">{locationError}</p>
@@ -310,11 +316,11 @@ const StoresPage = () => {
               <h2 className="text-2xl font-semibold mt-6">
                 {filteredStores.length > 0
                   ? searchType === 'city' 
-                    ? `Found ${filteredStores.length} stores in ${selectedValue}`
-                    : "Nearest SNAP stores to your location"
+                    ? `${text['found']} ${filteredStores.length} ${text['storesIn']} ${selectedValue}`
+                    : `${text['nearest']}`
                   : searchType === 'city'
-                    ? `No stores found in ${selectedValue}`
-                    : "No nearby stores found"}
+                    ? `${text['noStores1']} ${selectedValue}`
+                    : `${text['noStores2']}`}
               </h2>
               <ul className="my-8 grid md:grid-cols-2 items-center justify-center gap-6 md:gap-8">
                 {/* Display up to 6 stores */}

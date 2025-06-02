@@ -3,14 +3,17 @@ import { IconContext } from "react-icons/lib";
 import { Link } from "react-router";
 import { stepCardInfo } from "../constants/TextConstants";
 import Chatbot from "./Chatbot";
+import {snapInfoTextConstants} from "../constants/TextConstants";
+import { useLanguage } from './Translator';
+import {LanguageSelector} from './Translator';
 
 // Page Header
-const Header = () => {
+const Header = ({lang}) => {
   return (
     <div className="pt-6 mt-10 md:mt-0 sm:pt-10 bg-orange-300 mb-0">
       <div className="relative bg-orange-300 pb-8">
         <h1 className="text-center relative z-10 pt-6 lg:pb-16 lg:text-left lg:pl-18 text-white px-4 md:px-12 text-3xl sm:text-4xl md:text-7xl font-bold">
-          Let's Get Started
+          {lang['header']['title']}
         </h1>
         <svg className="absolute bottom-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319"><path fill="#fff" fillOpacity="1" d="M0,288L120,282.7C240,277,480,267,720,266.7C960,267,1200,277,1320,282.7L1440,288L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path></svg>
       </div>
@@ -19,11 +22,11 @@ const Header = () => {
 };
 
 // During Your Application Section
-const DuringSection = () => {
+const DuringSection = ({lang}) => {
   return (
     <section className="bg-white shadow-sm p-4 sm:p-8 md:p-12 my-8 md:my-14 rounded-2xl mx-4 sm:mx-0">
       <h3 className="text-2xl sm:text-4xl text-dark-green font-bold text-center mb-6 sm:mb-10">
-        During Your Application
+        {lang['during']['sectionTitle']}
       </h3>
       <div className="rounded-2xl px-4 sm:px-10 py-8 sm:py-16 flex flex-col md:flex-row items-center gap-6 md:gap-10 shadow-sm">
         <div className="size-[54px] rounded-full mb-4 md:mb-0">
@@ -33,15 +36,13 @@ const DuringSection = () => {
         </div>
         <div className="px-2 sm:px-6">
           <h3 className="text-2xl sm:text-3xl text-dark-green font-semibold mb-4 text-center md:text-left">
-            Your Personal Assistant
+            {lang['during']['assistantTitle']}
           </h3>
           <p className="text-lg sm:text-xl font-light">
-            For any questions you may have, like whether you qualify for a
-            certain exception or what IDs and documents you may use, our AI Agent
-            will be available to help you 24/7!
+            {lang['during']['assistantPara']}
             <br />
             <br />
-            <b>Access it using the icon in the bottom right corner.</b>
+            <b>{lang['during']['assistantNote']}</b>
           </p>
         </div>
       </div>
@@ -67,15 +68,16 @@ const StepCard = ({ header, para, number }) => {
 };
 
 // After Application Section
-const AfterSection = () => {
+const AfterSection = ({lang}) => {
+  const cardText = stepCardInfo[lang]
   return (
     <section className="bg-white shadow-sm p-4 sm:p-8 md:p-12 my-8 md:my-14 rounded-2xl mx-4 sm:mx-0">
       <h3 className="text-2xl sm:text-4xl text-dark-green font-bold text-center mb-6 sm:mb-10">
-        After You Submit
+        {snapInfoTextConstants[lang]['after']['sectionTitle']}
       </h3>
       <div>
         <ul className="space-y-8 sm:space-y-10">
-          {Object.entries(stepCardInfo).map((step, index) => (
+          {Object.entries(cardText).map((step, index) => (
             <li key={index}>
               <StepCard {...step[1]} />
             </li>
@@ -86,7 +88,7 @@ const AfterSection = () => {
         to="/stores"
         className="block w-fit mx-auto mt-8 mb-2 px-6 sm:px-8 py-3 rounded-full bg-[#2D6A4F] hover:bg-[#1B4332] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg flex items-center space-x-2 transform hover:scale-105"
       >
-        Find Stores
+        {snapInfoTextConstants[lang]['after']['linkText']}
       </Link>
     </section>
   );
@@ -94,14 +96,17 @@ const AfterSection = () => {
 
 // Main
 const SnapInfoPage = () => {
+  const {language} = useLanguage()
+  const text = snapInfoTextConstants[language]
+
   return (
     <div className="bg-gradient-to-b from-white to-gray-50 text-gray-800 sm:py-12 space-y-8 sm:space-y-16 min-h-screen">
-      <Header />
+      <Header lang={text} />
       <div className="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-24">
         <div className="max-w-7xl mx-auto">
           <section className="bg-white rounded-2xl shadow-sm p-4 sm:p-10">
             <h2 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center text-[#2D6A4F]">
-              How does it work?
+              {text['howItWorks']['sectionTitle']}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
               <div className="space-y-3 sm:space-y-4 p-4 sm:p-6 rounded-xl hover:shadow-md transition-colors duration-300 flex flex-col items-center md:items-start text-center md:text-left">
@@ -113,10 +118,10 @@ const SnapInfoPage = () => {
                   />
                 </div>
                 <h3 className="text-xl sm:text-3xl font-semibold text-[#2D6A4F]">
-                  1. Apply
+                  {text['howItWorks']['step1']['title']}
                 </h3>
                 <p className="text-base sm:text-xl text-gray-700">
-                  You'll be interviewed by local officials to determine eligibility within 1-2 weeks.
+                  {text['howItWorks']['step1']['para']}
                 </p>
               </div>
               <div className="space-y-3 sm:space-y-4 p-4 sm:p-6 rounded-xl hover:shadow-md transition-colors duration-300 flex flex-col items-center md:items-start text-center md:text-left">
@@ -128,10 +133,10 @@ const SnapInfoPage = () => {
                   />
                 </div>
                 <h3 className="text-xl sm:text-3xl font-semibold text-[#2D6A4F]">
-                  2. Get benefits
+                  {text['howItWorks']['step2']['title']}
                 </h3>
                 <p className="text-base sm:text-xl text-gray-700">
-                  If approved, you'll get an EBT card to use your benefits for groceries.
+                  {text['howItWorks']['step2']['para']}
                 </p>
               </div>
               <div className="space-y-3 sm:space-y-4 p-4 sm:p-6 rounded-xl hover:shadow-md transition-colors duration-300 flex flex-col items-center md:items-start text-center md:text-left">
@@ -143,18 +148,18 @@ const SnapInfoPage = () => {
                   />
                 </div>
                 <h3 className="text-xl sm:text-3xl font-semibold text-[#2D6A4F]">
-                  3. Buy groceries
+                  {text['howItWorks']['step3']['title']}
                 </h3>
                 <p className="text-base sm:text-xl text-gray-700">
-                  Use your SNAP card at supermarkets, stores, {" "}
+                  {text['howItWorks']['step3']['paraStart']} {" "}
                   <a
                     href="https://www.fns.usda.gov/ebt/where-can-i-use-ebt"
                     className="text-green-700 underline hover:text-green-800 transition-colors"
                   >
-                    farmers' markets.
+                    {text['howItWorks']['step3']['linkText']}
                   </a>
                   {" "}
-                  You can locate them using our <Link className="underline text-green-700 hover:text-green-800 transition-colors" to='/stores'>store locator tool</Link>.
+                  {text['howItWorks']['step3']['paramid']} <Link className="underline text-green-700 hover:text-green-800 transition-colors" to='/stores'>{snapInfoTextConstants['eng']['howItWorks']['step3']['linkText2']}</Link>.
                 </p>
               </div>
             </div>
@@ -162,7 +167,7 @@ const SnapInfoPage = () => {
 
           <section className="bg-white rounded-2xl shadow-sm p-4 sm:p-10 mt-8 sm:mt-12">
             <h2 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center text-[#2D6A4F]">
-              What will I need?
+              {text['documents']['title']}
             </h2>
             <div className="w-full sm:w-3/4 mx-auto">
               <div className="w-fit mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 mb-6 sm:mb-10">
@@ -175,7 +180,7 @@ const SnapInfoPage = () => {
                     />
                   </div>
                   <p className="text-sm sm:text-xl font-medium text-gray-700">
-                    A copy of your ID
+                    {text['documents']['id']}
                   </p>
                 </div>
                 <div className="p-4 sm:p-6 rounded-xl space-y-3 sm:space-y-4 flex flex-col items-center text-center hover:shadow-md transition-all duration-300">
@@ -187,7 +192,7 @@ const SnapInfoPage = () => {
                     />
                   </div>
                   <p className="text-sm sm:text-xl font-medium text-gray-700">
-                    Proof of any income
+                    {text['documents']['income']}
                   </p>
                 </div>
                 <div className="p-4 sm:p-6 rounded-xl space-y-3 sm:space-y-4 flex flex-col items-center text-center hover:shadow-md transition-all duration-300">
@@ -199,10 +204,10 @@ const SnapInfoPage = () => {
                     />
                   </div>
                   <p className="text-sm sm:text-xl font-medium text-gray-700">
-                    Proof of immigration status
+                    {text['documents']['immigration']}
                     <br />
                     <span className="text-xs sm:text-sm text-gray-500">
-                      For non-citizens
+                      {text['documents']['endText']}
                     </span>
                   </p>
                 </div>
@@ -210,7 +215,7 @@ const SnapInfoPage = () => {
             </div>
             <div className="flex justify-center">
               <button className="px-6 sm:px-8 py-2 sm:py-3 rounded-full bg-[#2D6A4F] hover:bg-[#1B4332] text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-base sm:text-lg flex items-center space-x-2 transform hover:scale-105">
-                <span>Apply Now</span>
+                <span>{text['documents']['btn']}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-4 w-4 sm:h-5 sm:w-5"
@@ -226,8 +231,8 @@ const SnapInfoPage = () => {
               </button>
             </div>
           </section>
-          <DuringSection />
-          <AfterSection />
+          <DuringSection lang={text} />
+          <AfterSection lang={language}/>
           <Chatbot />
         </div>
       </div>

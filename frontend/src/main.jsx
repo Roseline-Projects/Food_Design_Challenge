@@ -10,9 +10,11 @@ import StoresPage from './components/StoresPage.jsx';
 import TransportationPage from './components/TransportationPage.jsx';
 import NavBar from './components/NavBar.jsx';
 import Layout from './components/Layout.jsx';
+import { LanguageProvider } from './components/Translator';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <LanguageProvider>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout/>}>
@@ -26,5 +28,6 @@ createRoot(document.getElementById('root')).render(
         <Route path='setup' element={<SetupPage />} /> */}
       </Routes>
     </BrowserRouter>
+    </LanguageProvider>
   </StrictMode>
 )
